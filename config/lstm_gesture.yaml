@@ -1,0 +1,20 @@
+name: "lstm_gesture"
+
+model_params:
+  type: 'LSTM'
+  emsize: 300
+  nhid: 200
+  nlayers: 2
+  dropout: 0.2
+  ntokens: 82 # 0,1,2,...,81
+  pretrained_embeds: null
+  tokenizer: null # json file name
+
+train_params:
+  epochs: 40
+  batch_size: 20
+  bptt: 35
+  eol_id: 82 # 0,1,...,81 are regular tokens, 82 is the end-of-line
+  lr: 0.05
+  lr_scheduler: StepLR
+  clip: 0.5

@@ -1,0 +1,21 @@
+name: "lstm_mix"
+
+model_params:
+  type: 'LSTM'
+  w_emsize: 300
+  nhid: 200
+  nlayers: 2
+  dropout: 0.2
+  pretrained_embeds: 'glove.6B.300d'
+
+  g_ntokens: 82 # {0,1,2,...,81}, 0 is for non-gesture, 1-81 are regular gestures, 82 is used as g_pad_id
+  g_emsize: 300
+  mix_emsize: 300
+  pred_task: 'word'
+
+train_params:
+  epochs: 20
+  batch_size: 20
+  lr: 0.05
+  lr_scheduler: StepLR
+  clip: 0.25

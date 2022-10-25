@@ -1,0 +1,22 @@
+name: "trm_mix"
+
+model_params:
+  d_model: 300
+  d_hid: 200
+  w_emsize: 300
+  nlayers: 2
+  nhead: 2
+  dropout: 0.2
+  pretrained_embeds: 'glove.6B.300d'
+
+  g_ntokens: 82 # {0,1,2,...,81}, 0 is for non-gesture, 1-81 are regular gestures, 82 is used as g_pad_id
+  g_emsize: 300
+  mix_emsize: 300
+  pred_task: 'word'
+
+train_params:
+  epochs: 20
+  batch_size: 20
+  lr: 0.5
+  lr_scheduler: StepLR
+  clip: 0.5

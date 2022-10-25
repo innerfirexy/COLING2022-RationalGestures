@@ -1,0 +1,20 @@
+name: "trm_gesture"
+
+model_params:
+  d_model: 300
+  d_hid: 200
+  nlayers: 2
+  nhead: 2
+  dropout: 0.2
+  ntokens: 82 # 0,1,...,81
+  pretrained_embeds: null
+  tokenizer: null # json file name
+
+train_params:
+  epochs: 40
+  batch_size: 20
+  bptt: 35
+  eol_id: 82 # 0,1,...,81 are regular tokens, 82 is the end-of-line
+  lr: 0.5
+  lr_scheduler: StepLR
+  clip: 0.5
