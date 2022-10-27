@@ -15,7 +15,37 @@ Code for reproducing the results in paper: [**Xu, Y., Cheng, Y., & Bhatia, R. (2
 ## Install dependancies
 
 ## Data preparation
-How the original video data are collected and processed are described in the repo for [Life-lessons dataset].
+How the original video data are collected and processed are described in our repo for [Life-lessons dataset]().
+
+### Raw gesture tokens
+The raw gesture tokens are in the folder `data/youtube-video_gesture/label3x3/`, within which each `.txt` file corresponds to one video. 
+
+For instance, the first few lines of `0iApML4l0lI.txt` are as follows:
+```
+72 45 72 72 72 72 72 72 72 72 72
+72 64 56 63 63 63
+56 56 64 56 56 64
+63 63 63 64 63 63 63
+63 72 64 64
+...
+```
+
+Each line corresponds to one line of utterance in the automatically transcribed subscript from YouTube's API. Each gesture token (e.g., `72`, `45`, etc.) corresponds to one word token.
+
+You can find this one-to-one mapping more clearly in the same data file under the folder `data/youtube-video_text_gesture/label3x3`:
+```
+if you want to be cast in a movie or a	72 45 72 72 72 72 72 72 72 72 72
+television show it's really important to	72 64 56 63 63 63
+exactly how the casting process works	56 56 64 56 56 64
+because the audition is not the only	63 63 63 64 63 63 63
+step in the process	63 72 64 64
+...
+```
+
+However, note that these are raw data that need be further processed to generate the train/test data used by the models. 
+
+### Generate train/test data
+
 
 ## Train the models
 Run commands as follows:
