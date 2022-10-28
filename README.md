@@ -32,7 +32,7 @@ For instance, the first few lines of `0iApML4l0lI.txt` are as follows:
 
 Each line corresponds to one line of utterance in the automatically transcribed subscript from YouTube's API. Each gesture token (e.g., `72`, `45`, etc.) corresponds to one word token.
 
-You can find this one-to-one mapping more clearly in the same data file under the folder `data/youtube-video_text_gesture/label3x3`:
+You can find this one-to-one mapping more clearly in the same file (`0iApML4l0lI.txt`) under the folder `data/youtube-video_text_gesture/label3x3`:
 ```
 if you want to be cast in a movie or a	72 45 72 72 72 72 72 72 72 72 72
 television show it's really important to	72 64 56 63 63 63
@@ -41,10 +41,20 @@ because the audition is not the only	63 63 63 64 63 63 63
 step in the process	63 72 64 64
 ...
 ```
+Here you can find that the mapping between a word and a gesture: "if" => 72, "you" => 45, "want" => 72, ... These data are not directly used in the paper, but will be useful in future studies. 
 
 However, note that these are raw data that need be further processed to generate the train/test data used by the models. 
 
 ### Generate train/test data
+Use the notebook files in folder `preprocess_notebooks` to generate the train/test data.
+
+- Use `prepare_data.ipynb` to convert the raw gesture tokens of each video to one line and collect them to a set. The train-test split ratio is 80%-20%, that is, 10 out of the 53 videos are used for testing.
+
+- As the result, `data/gesture/train.txt` contains 43 lines, and `data/gesture/test.txt` contains 10 lines.
+
+- Use `compress_gestures.ipynb` to generate compressed gesture data from the previous step. That is:
+  - `` => 
+  - `` => 
 
 
 ## Train the models
