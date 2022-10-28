@@ -13,9 +13,15 @@ Code for reproducing the results in paper: [**Xu, Y., Cheng, Y., & Bhatia, R. (2
 ```
 
 ## Install dependancies
+Run the command:
+```
+pip install -r requirements.txt
+```
 
 ## Data preparation
-How the original video data are collected and processed are described in our repo for [Life-lessons dataset](https://github.com/innerfirexy/Life-lessons).
+All the data needed to reproduce the results in the paper are already in the `data` folder. It is not necessary to run any scripts to get the data. So this section is to provide explanations about how data are created and organized. 
+
+Earlier preprocessing, extraction steps with respect to the original video data are described in our repo for [Life-lessons dataset](https://github.com/innerfirexy/Life-lessons).
 
 ### Raw gesture tokens
 The raw gesture tokens are in the folder `data/youtube-video_gesture/label3x3/`, within which each `.txt` file corresponds to one video. 
