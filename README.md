@@ -15,7 +15,7 @@ Code for reproducing the results in paper: [**Xu, Y., Cheng, Y., & Bhatia, R. (2
 ## Install dependancies
 
 ## Data preparation
-How the original video data are collected and processed are described in our repo for [Life-lessons dataset]().
+How the original video data are collected and processed are described in our repo for [Life-lessons dataset](https://github.com/innerfirexy/Life-lessons).
 
 ### Raw gesture tokens
 The raw gesture tokens are in the folder `data/youtube-video_gesture/label3x3/`, within which each `.txt` file corresponds to one video. 
@@ -45,6 +45,8 @@ Here you can find that the mapping between a word and a gesture: "if" => 72, "yo
 
 However, note that these are raw data that need be further processed to generate the train/test data used by the models. 
 
+Also note that the procedures for extracting the gesture tokens (72, 45, etc.) are not described in this repo. Please check out the repo for our [Life-lessons dataset](https://github.com/innerfirexy/Life-lessons) dataset, if you are interested. 
+
 ### Generate train/test data
 Use the notebook files in folder `preprocess_notebooks` to generate the train/test data.
 
@@ -53,8 +55,8 @@ Use the notebook files in folder `preprocess_notebooks` to generate the train/te
 - As the result, `data/gesture/train.txt` contains 43 lines, and `data/gesture/test.txt` contains 10 lines.
 
 - Use `compress_gestures.ipynb` to generate compressed gesture data from the previous step. That is:
-  - `` => 
-  - `` => 
+  - `data/gesture/train.txt` => `data/gesture_compressed/train.txt`
+  - `data/gesture/test.txt` => `data/gesture_compressed/test.txt`
 
 
 ## Train the models

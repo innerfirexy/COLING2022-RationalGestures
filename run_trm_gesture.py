@@ -10,7 +10,7 @@ from tqdm import tqdm
 import math
 import torch
 from torch import nn, Tensor
-import torchtext
+import gensim.downloader
 
 import utils
 from models import TransformerModel, generate_square_subsequent_mask
@@ -141,7 +141,7 @@ def init_model(args):
     pretrained_embeds = model_params['pretrained_embeds']
     tokenizer = model_params['tokenizer']
     if pretrained_embeds:
-        embed = load_pretrained_embed(emsize, tokenizer)
+        embed = load_pretrained_embed(d_model, tokenizer)
         vars(args)['pretrained_embeds'] = embed
     else:
         vars(args)['pretrained_embeds'] = None
@@ -152,13 +152,14 @@ def init_model(args):
     return model
 
 def load_pretrained_embed(emsize, tokenizer):
-    tt_embed = torchtext.vocab.GloVe(name="6B", dim=emsize)
+    # tt_embed = torchtext.vocab.GloVe(name="6B", dim=emsize)
+    wv = gensim.downloader.load('word2vec-google-news-300')
     vocab = tokenizer.get_vocab()
     embed = np.random.randn(len(vocab), emsize)
     for word in vocab:
-        if vocab[word] in tt_embed.stoi:
+        if word in wv:
             w_id = vocab[word]
-            embed[w_id, :] = tt_embed[word]
+            embed[w_id, :] = wv[word]
     return torch.from_numpy(embed)
 
 
