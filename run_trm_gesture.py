@@ -403,7 +403,7 @@ def main(args):
 
 
 if __name__ == '__main__':
-    args, unknown = parser.parse_known_args()
+    args = parser.parse_args()
     with open(args.config) as f:
         config = yaml.safe_load(f)
     vars(args)['config'] = config
